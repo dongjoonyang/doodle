@@ -6,7 +6,7 @@
     transition html (전체에 걸기 위함) 의 변화가 없기때문에 모든 css에 transition 걸었음.
 */
 html{font-size:62.5%;background:var(--background);color:var(--text);transition:.3s;}
-body{font-size:1rem;transition:.3s}
+body{font-size:1.6rem;transition:.3s}
 
 /* 공통 */
 .display-none{display:none;transition:.3s}
@@ -23,14 +23,14 @@ a{text-decoration:none;}
     --basic:#000;
     --text:#121212;
     --text-sub:#707070;
-    transition:.3s
+    transition:.3s;
 }
 :root[color-theme='dark']{
     --background: #121212;
     --basic:#fff;
     --text:#fff;
     --text-sub:#fff;
-    transition:.3s
+    transition:.3s;
 }
 /* Nav */
 .navi{position:fixed;top:0;right:0;left:0;height:5rem;line-height:5rem;background-color:var(--background);z-index:1;transition:.3s}
@@ -47,7 +47,8 @@ a{text-decoration:none;}
 */
 
 /* Nav 타이틀 */
-.navi h1 a{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);background:url("../../images/profile.png") no-repeat 0 0 / 100% auto;width:3.466rem;height:3.2rem;z-index: 1;} /* 104*96 */
+/* 104*96 */
+.navi h1 a{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);/* background:url("../../images/profile.png") no-repeat 0 0 / 100% auto; */width:3.466rem;height:3.2rem;z-index: 1;} 
 :root[color-theme='dark'] .navi h1 a{filter:invert();}
 
 /* Nav 메인 카테고리 */
@@ -61,12 +62,14 @@ a{text-decoration:none;}
 .navi-main .navi-main-box{position:relative}
 
 /* Nav 다크모드 토글 버튼 */
-.mode{position:absolute;right:-1.5rem;top:2.8rem;height:5rem;transition:.3s}
-.mode + label{position:relative;transition:.3s}
-.mode input[type="checkbox"].mode-chk{display:none;transition:.3s}
-.mode input[type="checkbox"].mode-chk + label:before{content:'';display:inline-block;width:4rem;height:4rem;border-radius:2rem;cursor:pointer;transition:.3s}
-.mode input[type="checkbox"].mode-chk + label:after{content:'';position:absolute;z-index:1;left:1rem;top:1rem;width:2.4rem;height:2.4rem;border-radius:2rem;background-size:100% 100%;cursor:pointer;background:var(--basic);transition:.3s}
-.mode [type="checkbox"]:checked.mode-chk + label:after{content:'';position:absolute;left:1rem;top:1rem;width:2.4rem;height:2.4rem;background-size:100% 100%;background:var(--basic);transition:.3s}
+.mode{position:absolute;right:10px;top:10px;transition:.3s;z-index: 100;}
+.mode + label{position:relative;}
+.mode input[type="checkbox"].mode-chk{display:none;}
+.mode input[type="checkbox"].mode-chk + label:before{content:'';display:inline-block;width:4rem;height:4rem;border-radius:50%;margin:0 5px -6px 0;cursor:pointer;}
+.mode input[type="checkbox"].mode-chk + label:hover:before{background-color:rgba(0,0,0,.15);}
+.mode input[type="checkbox"].mode-chk + label:after{content:'';position:absolute;left:1rem;top:1rem;background:url(../../images/light.svg) no-repeat;width:2rem;height:2rem;background-size:100% 100%;cursor:pointer;}
+.mode input[type="checkbox"]:checked.mode-chk + label:after{content:'';filter:invert();position:absolute;left:1rem;top:1rem;background:url(../../images/dark.svg) no-repeat;border-radius:50%;width:2rem;height:2rem;background-size:100% 100%;}
+.mode input[type="checkbox"]:checked.mode-chk + label:hover:before{background-color:rgba(255,255,255,.15);}
 
 /* Nav 서브카테고리 */
 .horizonScroll{position:relative;overflow-x:auto;margin:0 auto;box-sizing:border-box;-ms-overflow-style:none;scrollbar-width:none;background-color:var(--background);transition:.3s}
@@ -160,8 +163,6 @@ a{text-decoration:none;}
     .navi{height: 6rem;line-height: 6rem;}
     .navi-main #mainCategory li a{font-size:1.8rem;}
     .navi-main #mainCategory{height: 6rem;}
-    .mode{top:3.8rem;}
-    
     .note-list .note-item{width:calc(50% - 1.2rem);margin:.6rem .4rem;max-width:none;transition:.3s}
 
     /* 폰트 사이즈 */
