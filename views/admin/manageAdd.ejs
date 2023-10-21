@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('head.ejs') %>
+
+    <!-- include libraries BS3 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include font-awesome -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+
+    <!-- include google-code-prettify -->
+    <link rel="stylesheet" href="https://rawgit.com/google/code-prettify/master/src/prettify.css"/>
+    <script type="text/javascript" src="https://rawgit.com/google/code-prettify/master/src/prettify.js"></script>
+
+    <!-- include summernote -->
+    <link rel="stylesheet" href="/lib/summernote/summernote.min.css">
+    <script type="text/javascript" src="/lib/summernote/summernote.min.js"></script>
+    <script type="text/javascript" src="/lib/summernote/summernote-ext-highlight.js"></script>
+
+    <script src="/admin/js/manageRegister.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <%-include('nav.ejs') %>
+
+        <header>
+            <div class="toolbar">
+                <%-include('menu.ejs') %>
+                <%-include('logout.ejs') %>
+            </div>
+        </header>
+        <!-- action="/admin/board/boardAddProcess" method="post" enctype="multipart/form-data"-->
+        <main>
+            <div class="content">
+                <form id="boardAddForm"  method="post" >
+                    <div class="register">
+                        <div class="register__option">
+                            <div class="register__btn">
+                                <a href="javascript:;" id="boardCancelBtn" class="btn btn-cancel">취소</a>
+                                <button type="submit" id="boardAddBtn" class="btn btn-confirm">확인</button>
+                            </div>
+                        </div>
+                        
+                        <div class="register__action">
+                            <div class="card register__act">
+                                <input type="hidden" name="mainId" value="<%= mainId %>">
+                                <input type="hidden" name="subId" value="<%= subId %>">
+                                <textarea id="summerContents" name="contents" class="display-none"></textarea>
+
+                                <div class="form__groups">
+                                    <label for="registerTitle"><span class="color__important">* </span>제목</label>
+                                    <input id="registerTitle" type="text" name="title">
+                                </div>
+
+                                <div class="form__groups">
+                                    <p><span class="color__important">* </span>썸네일 이미지</p>
+                                    <div class="filebox bs3-primary preview-image">
+                                        <input class="upload-name" value="파일선택" disabled="disabled">
+                                        <label for="inputFile">업로드</label> 
+                                        <input type="file" id="inputFile" name="userfile" class="upload-hidden" accept="image/gif, image/jpeg, image/png, image/webp"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card edit">
+                    <p>내용</p>
+                    <div id="summernote"></div>
+                    <!-- code view -->
+                    <button id="previewBtn" class="preview__btn">코드 뷰티</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

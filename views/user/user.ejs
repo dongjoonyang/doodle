@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./head.ejs') %>
+    <script src="/user/js/user.js"></script>
+</head>
+<body>
+    <!-- 메인 카테고리 -->
+    <%-include('./nav.ejs') %>
+    <section id="wrap" class="wrap">
+        <!--프로필 -->
+        <div id="profile" class="profile">
+            <%-include('./profile.ejs') %>
+        </div>
+        <!-- 카테고리 -->
+        <div id="note" class="note">
+            <!-- 리스트 -->
+            <div id="noteList" class='note-list'></div>
+            <!-- 로딩 -->
+            <div id='scroll-observer' class='scroll-observer'>
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <!-- 데이터가 없을시 표시 class on 추가 -->
+            <div id="emptyData" class="empty-data">데이터가 없습니다.</div>
+        </div>
+        <!-- 팝업 -->
+        <div id="pop" class="layer-n">
+            <div class="bg"></div>
+            <div class="layer-box">
+                <div class="pop-header">
+                    <a href="#;" class="pop-close"></a>
+                </div>
+                <div class="pop-con scroll">
+                    <p id="popConName" class="pop-con-name"></p>
+                    <p class="pop-con-category">Format : <span id="popConCategory"></span></p>
+                    <div class="pop-area"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

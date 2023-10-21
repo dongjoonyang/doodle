@@ -1,0 +1,90 @@
+.profiler { font-family:"Roboto"; margin-top:5rem; padding: 0 4rem; transition:.3s; padding:0 1.8rem;box-sizing: border-box;} 
+/* header */
+.head { padding-top: 2.7rem; } 
+.head h1 { font-size:3.4rem; font-family:"RobotoB"; margin-bottom:1.5rem; transition:.3s} 
+.head h2 { font-size:3.4rem; font-family:"RobotoB"; margin-bottom:3.4rem; transition:.3s} 
+.head .profile-img {margin:0 auto 2.29rem;width:30rem;height:27.6rem;background: url('../../images/profile_big.png') no-repeat 0 0 / 100% auto; transition:.3s} 
+[color-theme='dark'] .head .profile-img{filter: invert(); transition:.3s}
+.head dl { margin-bottom:9rem; line-height:2.1rem; transition:.3s} 
+.head dl dt { font-size:1.8rem; transition:.3s} 
+.head dl dd { font-size:1.8rem; font-family:"RobotoM"; margin-bottom:1rem; transition:.3s} 
+
+/* career */
+.career{position:relative;}
+.career h2 { font-family: "RobotoB"; font-size:3.4rem; margin-bottom:4.8rem; transition:.3s} 
+.career > section > div { margin-bottom:4.8rem; transition:.3s} 
+.career > section > div:last-child{margin-bottom:8.3rem;transition:.3s}
+.career > section > div p { font-family: "Roboto"; font-size: 2rem; transition:.3s} 
+.career > section > div p.tit { margin-bottom:3rem; transition:.3s} 
+.career > section > div p.line { position:relative; width:100%; height: 2px; background-color: var(--basic); margin-bottom: 2.2rem; transition:.3s} 
+.career > section > div p.line::before { content: ""; position: absolute; top:-8px; left:0; width:16px; height:16px; border-radius: 50%; background-color: var(--basic); transition:.3s} 
+.career > section > div p.date { font-family: "RobotoM"; font-size: 2.6rem; transition:.3s} 
+
+/* skills */
+.skills h2 { font-family: "RobotoB"; font-size:3.4rem; margin-bottom:4.8rem; transition:.3s} 
+.skills > section > div > div { margin-bottom: 1.8rem; transition:.3s} 
+.skills-item01 { width: 100%; border: 2px solid var(--basic); height: 16rem; transition:.3s} 
+.skills-item01 span { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; box-shadow: 0 0 0 1px var(--basic) inset; font-size: 3rem; animation-duration: 1.5s; animation-name: trans; animation-iteration-count: infinite; animation-direction: alternate; transition:.3s} 
+.skills-item02 { width: 100%; border: 2px solid var(--basic); height: 16rem; transition:.3s} 
+.skills-item02 span { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; font-size: 3rem; transition:.3s} 
+.skills-item03 { display: flex; justify-content: space-between; align-items: center; transition:.3s} 
+.skills-item03 > div { width: calc(50% - 1.2rem); height: 100%; border:2px solid var(--basic); height: 16rem; transition:.3s} 
+.skills-item03 > div span { display: flex; justify-content: center; align-items: center; height: 100%; font-size: 3rem; transition:.3s} 
+.skills-item03 > div:first-child span { box-shadow: 0 0 0 1px var(--basic) inset; border-radius: 50%; animation-duration: 1.5s; animation-name: trans; animation-iteration-count: infinite; animation-direction: alternate; transition:.3s} 
+.skills-item04 { width: 100%; border: 2px solid var(--basic); height: 16rem; transition:.3s} 
+.skills-item04 span { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; box-shadow: 0 0 0 1px var(--basic) inset; font-size: 3rem; animation-duration: 1.5s; animation-name: trans; animation-iteration-count: infinite; animation-direction: alternate; transition:.3s} 
+
+/* animation */
+@keyframes trans { 
+    from { border-radius: 0; } 
+    to { border-radius: 50%; } 
+}
+
+/* Small devices (landscape phones, 576px and up) *//* 미디어 쿼리는 기본 브라우저 크기 font-size 16을 먹음 style.css에 미디어쿼리 재정의함 */
+@media (min-width: 36rem) {/* font 10px */} 
+ 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 48rem) {
+    .profiler{margin-top: 6rem;transition:.3s}
+    .head{padding-top:3.7rem;transition:.3s}
+    .head h1{font-size:6.4rem;transition:.3s}
+    .head h2{font-size:6.4rem;margin-bottom:8.4rem;transition:.3s}
+    .head .profile-img{width:60rem;height:55.2rem;margin-bottom:4.2rem;transition:.3s}
+    .head dl{margin-bottom:21.6rem;transition:.3s}
+    .head dl dt{font-size:2.4rem;transition:.3s}
+    .head dl dd{font-size:2.4rem;margin-bottom:2rem;margin-top:1rem;transition:.3s}
+
+    .career{display:flex;transition:.3s}
+    .career h2{font-size:6.4rem;width:25.4rem;transition:.3s}
+    .career > section{width: calc( 100% - 25.4rem );transition:.3s}
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 62rem) {/* font 10px */}
+ 
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 75rem) { /* font 10px */}
+ 
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 87.5rem) { /* font 10px */ } 
+
+/* 1600px */
+@media (min-width: 100rem) { 
+    /* font 10px */
+    .profiler{max-width:160rem;margin:0 auto;}
+    .head{position:relative;display:flex;justify-content:space-between;transition:.3s}
+    .head h1{margin-top:41.4rem;margin-bottom:58.3rem;transition:.3s}
+    .head h2{margin-top:41.4rem;margin-bottom:58.3rem;transition:.3s}
+    .profile-img{position: absolute;left:50%;top:16.7rem;transform: translate(-50%, 0);transition:.3s}
+    .head dl{position: absolute;top:53.3rem;transition:.3s}
+
+    .career{height:67.6rem;transition:.3s}
+    .career > section{position:absolute;left:0;right:0;top:0;width: 100%;display: flex;flex-direction: column;transition:.3s}
+    .career > section > div{width:33.33%;transition:.3s}
+    .career > section > div:nth-of-type(1){margin-left:auto;transition:.3s}
+    .career > section > div:nth-of-type(2){margin-left:auto;margin-right:auto;transition:.3s}
+
+    .skills > section > div{display:flex;justify-content: space-between;} 
+    .skills > section > div > div{width:49%;}
+    .skills > section > div > div.skills-item03{width: 49.3%;}
+}

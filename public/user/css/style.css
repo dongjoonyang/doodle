@@ -1,0 +1,189 @@
+/* 
+    62.5% 폰트 사이즈를 줌으로써 계산은 편해졌지만, html 전체에다가 transition:.3s 애니메이션을 걸면
+    transition을 전체 걸었을때, 미디어쿼리 ex) 태블릿 버젼 반응부분에서 기본 16px 을 한번 거쳤다가  ex) html{fonts-size:12px} 으로 변경되기때문에, 애니메이션 끊기는 현상 발생
+    
+    계산하기 쉽게 미디어쿼리 10px > 62.5%로 진행
+    transition html (전체에 걸기 위함) 의 변화가 없기때문에 모든 css에 transition 걸었음.
+*/
+html{font-size:62.5%;background:var(--background);color:var(--text);transition:.3s;}
+body{font-size:1rem;transition:.3s}
+
+/* 공통 */
+.display-none{display:none;transition:.3s}
+.ir{display:block;overflow:hidden;Font-size:1px;line-height:0;text-indent:-9999px;transition:.3s}
+.overflow-hidden{overflow-y: hidden;transition:.3s}
+a{text-decoration:none;}
+/* 
+    Dark,light 모드 
+    다크모드 attribute 활용 : 사용자에게 모드 변경 권한을 넘기는 방향으로 작업 하므로 사용 하지 않음(토글 버튼으로 제어함)
+    @media (prefers-color-scheme: dark) {} 사용자에게 모드 변경 권한을 넘기지 않음(버튼이 아닌 os 기반으로 작업시 필요)
+*/
+:root[color-theme='light']{
+    --background: #fff;
+    --basic:#000;
+    --text:#121212;
+    --text-sub:#707070;
+    transition:.3s
+}
+:root[color-theme='dark']{
+    --background: #121212;
+    --basic:#fff;
+    --text:#fff;
+    --text-sub:#fff;
+    transition:.3s
+}
+/* Nav */
+.navi{position:fixed;top:0;right:0;left:0;height:5rem;line-height:5rem;background-color:var(--background);z-index:1;transition:.3s}
+.navi-border{padding: 0 1.8rem;transition: .3s;max-width: 160rem;margin: 0 auto;box-sizing: border-box;}
+.navi-line{border-bottom: 3px solid var(--basic);transition: .3s;}
+
+/* 사이드 음영
+.navi-gradient.left,
+.navi-gradient.right{content:"";position:absolute;top:5rem;bottom:-4.5rem;z-index:10;width:1.6rem;transition:.3s}
+[color-theme='light'] .navi-gradient.left{left:0;background:linear-gradient(to right,rgba(255,255,255,1),rgba(255,255,255,.5));transition:.3s}
+[color-theme='light'] .navi-gradient.right{right:0;background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,.5));transition:.3s}
+[color-theme='dark'] .navi-gradient.left{left:0;background:linear-gradient(to right,rgba(0,0,0,1),rgba(0,0,0,.5));transition:.3s}
+[color-theme='dark'] .navi-gradient.right{right:0;background:linear-gradient(to left,rgba(0,0,0,1),rgba(0,0,0,.5));transition:.3s}
+*/
+
+/* Nav 타이틀 */
+.navi h1 a{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);background:url("../../images/profile.png") no-repeat 0 0 / 100% auto;width:3.466rem;height:3.2rem;z-index: 1;} /* 104*96 */
+:root[color-theme='dark'] .navi h1 a{filter:invert();}
+
+/* Nav 메인 카테고리 */
+.navi-main{padding:0 1.8rem;max-width: 160rem;margin:0 auto;box-sizing: border-box;}
+.navi-main #mainCategory{position:relative;display:flex;justify-content:center;border-bottom:1px solid var(--basic);height:5rem;}
+.navi-main #mainCategory li:nth-child(1){padding:0 15% 0 0;}
+.navi-main #mainCategory li:nth-child(2){padding:0 0 0 15%;}
+.navi-main #mainCategory li a{display:inline-block;color:var(--text);font-size:1.4rem;height:100%;padding:0 1rem;}
+.navi-main #mainCategory li a:hover{color:var(--text);}
+.navi-main #mainCategory li a.active{font-weight:bold;color:var(--text);}
+.navi-main .navi-main-box{position:relative}
+
+/* Nav 다크모드 토글 버튼 */
+.mode{position:absolute;right:-1.5rem;top:2.8rem;height:5rem;transition:.3s}
+.mode + label{position:relative;transition:.3s}
+.mode input[type="checkbox"].mode-chk{display:none;transition:.3s}
+.mode input[type="checkbox"].mode-chk + label:before{content:'';display:inline-block;width:4rem;height:4rem;border-radius:2rem;cursor:pointer;transition:.3s}
+.mode input[type="checkbox"].mode-chk + label:after{content:'';position:absolute;z-index:1;left:1rem;top:1rem;width:2.4rem;height:2.4rem;border-radius:2rem;background-size:100% 100%;cursor:pointer;background:var(--basic);transition:.3s}
+.mode [type="checkbox"]:checked.mode-chk + label:after{content:'';position:absolute;left:1rem;top:1rem;width:2.4rem;height:2.4rem;background-size:100% 100%;background:var(--basic);transition:.3s}
+
+/* Nav 서브카테고리 */
+.horizonScroll{position:relative;overflow-x:auto;margin:0 auto;box-sizing:border-box;-ms-overflow-style:none;scrollbar-width:none;background-color:var(--background);transition:.3s}
+.horizonScroll::-webkit-scrollbar{display:none;transition:.3s}
+.sub-category.horizonScroll__wrapper{display:flex;align-items:center;margin:0 auto;font-size:0;height:4.5rem;white-space:nowrap;overflow:hidden;transition:.3s}
+.sub-category .horizonScroll__item{width: auto;text-decoration:none;height:100%;}
+.sub-category .horizonScroll__itemText{font-size:1.6rem;display:flex;align-items:center;height:100%;position:relative;margin:0 5px;padding:0 5px;box-sizing:border-box;text-align:center;white-space:nowrap;color:var(--basic);}
+.sub-category .horizonScroll__item.active .horizonScroll__itemText{color:var(--basic);font-weight:bold;letter-spacing:-.026em;}
+/* .sub-category .horizonScroll__item.active .horizonScroll__itemText:after{content:'';display:block;position:absolute;bottom:0;left:0;width:100%;height:2px;background-color:var(--basic);transition:.3s} */
+
+/* 리스트 */
+.note{padding:12rem 0;transition:.3s}
+.note-list{display:flex;flex-wrap:wrap;transition:.3s;margin:0 auto;padding:0 1.65rem;}
+.note-list .note-item{width:40.4rem;margin:1rem auto;border-top:.1rem solid var(--basic);border-right:.3rem solid var(--basic);border-bottom:.3rem solid var(--basic);border-left:.1rem solid var(--basic);transition:.3s;}/* max-width: 40.4rem 삭제 -> width:100% , width: 40.4rem으로 변경 */
+.note-list .note-item a{display:flex;flex-direction:column;padding:1rem;transition:.3s}
+.note-list .note-item .note-img{position:relative;width:100%;padding-top:78.22%;background-color:var(--background);border:.1rem solid var(--basic);transition:.3s}
+.note-list .note-item .note-img img{position:absolute;top:0;left:0;width:100%;height:100%;transition:.3s}
+.note-list .note-item .note-info{color:var(--text);transition:.3s}
+.note-list .note-item .note-info p:nth-of-type(1){font-size:1.8rem;height:5.5rem;line-height:5.5rem;border-bottom:1px solid var(--basic);transition:.3s}
+.note-list .note-item .note-info p:nth-of-type(2){font-size:1.4rem;height:4rem;line-height:4rem;transition:.3s}
+
+/* 로딩 */
+.scroll-observer{height:20rem;display:none;transition:.3s}
+.scroll-observer.on{display:flex;justify-content:center;align-items:center;transition:.3s}
+.lds-ring{display:inline-block;position:relative;width:6.4rem;height:6.4rem;transition:.3s}
+.lds-ring div{box-sizing:border-box;display:block;position:absolute;width:5.1rem;height:5.1rem;margin:.6rem;border:.6rem solid #fff;border-radius:50%;animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;border-color: #F86C06 transparent transparent transparent;transition:.3s}
+.lds-ring div:nth-child(1){animation-delay:-0.45s;transition:.3s}
+.lds-ring div:nth-child(2){animation-delay:-0.3s;transition:.3s}
+.lds-ring div:nth-child(3){animation-delay:-0.15s;transition:.3s}
+
+/* 빈 데이터 */
+.empty-data{display: none;transition:.3s}
+.empty-data.on{display: flex;justify-content: center;align-items: center;transition:.3s}
+
+/*** ========================================================================== 
+ * 팝업
+ * ========================================================================== */
+.layer-n{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;transition:.3s}
+.layer-n .layer-box{width:100%;position:absolute;top:0;left:50%;transform: translate(-50%, 0);right:0;bottom:0;box-shadow:0 0 1rem rgb(0 0 0 / 30%);background-color:var(--background);transition:.3s}
+.layer-n .bg{position:absolute;z-index:-1;top:0;left:0;right:0;bottom:0;background-color:#121212;opacity:0.5;filter:alpha(opacity=50);transition:.3s}
+.layer-n .pop-header{position:fixed;top:0;left:.6rem;right:.6rem;height:6rem;background-color:var(--background);transition:.3s}
+.layer-n .pop-close{display:flex;justify-content:center;align-items:center;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);font-size:24px;color:var(--basic);transition:.3s;width:4rem;height:4rem;padding-top:1rem;}
+
+.layer-n .pop-close:before, 
+.layer-n .pop-close:after {position: absolute;left: 15px;content:' ';height: 40px;width: 2px;background-color: #000;}
+.layer-n .pop-close:before {transform: rotate(45deg);}
+.layer-n .pop-close:after {transform: rotate(-45deg);}
+
+
+.layer-n .pop-con{margin-top:6.1rem;height:calc(100% - 6.1rem);background-color:var(--background);overflow-y:scroll;transition:.3s}
+.layer-n .pop-con.scroll::-webkit-scrollbar{width:4px;transition:.3s}
+.layer-n .pop-con.scroll::-webkit-scrollbar-thumb{background:#217af4;border-radius: 10px;transition:.3s}
+.layer-n .pop-con.scroll::-webkit-scrollbar-track{background:rgba(33, 122, 244, .1);transition:.3s}
+.layer-n .pop-con .pop-con-name{font-size:2.4rem;text-align:center;margin-bottom:2.4rem;margin-top:2.4rem;transition:.3s}
+.layer-n .pop-con .pop-con-category{font-size:1.8rem;text-align:center;margin-bottom:3.5rem;transition:.3s}
+.layer-n .pop-area img{max-width:100%;transition:.3s}/* 이미지 넓이 유동적 필요시 제거 */
+
+/* 폰트 사이즈 */
+.pop-area h1{font-size:3.6rem;transition:.3s}
+.pop-area h2{font-size:2.8rem;transition:.3s}
+.pop-area h3{font-size:2rem;}
+.pop-area p{text-align:center;font-weight:bold;margin:.6rem 0;font-size:1.6rem;line-height: 1.7;letter-spacing: -0.004em;word-break: keep-all;overflow-wrap: break-word;transition:.3s}
+.pop-area pre{margin:0 auto;width:90%;background-color:#eee;border-radius: 2px;padding:1rem;}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+        transition:.3s
+    }
+    100% {
+        transform: rotate(360deg);
+        transition:.3s
+    }
+}
+ /* //X-Small devices (portrait phones, less than 576px) */
+
+/*** ========================================================================== 
+ * 미디어쿼리
+   미디어 쿼리는 기본 브라우저 크기 font-size 16을 가지고 있음 재정의 함
+ * ========================================================================== */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 36rem) {
+    html{font-size:62.5%;} 
+    .sub-category .horizonScroll__itemText{font-size:1.6rem;}
+    .note{padding:15rem 0;transition:.3s}
+    .note-list{margin:0 auto;padding:0 1.4rem;}
+}
+ 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 48rem) {
+    .navi{height: 6rem;line-height: 6rem;}
+    .navi-main #mainCategory li a{font-size:1.8rem;}
+    .navi-main #mainCategory{height: 6rem;}
+    .mode{top:3.8rem;}
+    
+    .note-list .note-item{width:calc(50% - 1.2rem);margin:.6rem .4rem;max-width:none;transition:.3s}
+
+    /* 폰트 사이즈 */
+    .pop-area h1{font-size:4rem;transition:.3s}
+    .pop-area h2{font-size:3.2rem;transition:.3s}
+    .pop-area h3{font-size:2.4rem;}
+    .pop-area p{font-size:1.8rem;transition:.3s}
+}
+ 
+/* Large devices (desktops, 992px and up) */
+ @media (min-width: 62rem) {
+    .note-list .note-item{width:calc(33.33% - 1.2rem);margin:.6rem .4rem;transition:.3s}
+ }
+ 
+/* X-Large devices (large desktops, 1200px and up) */
+ @media (min-width: 75rem) {
+    .note-list .note-item{width:calc(25% - 1.2rem);margin:.6rem .4rem;transition:.3s;}
+ }
+ 
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 87.5rem) {
+    .layer-n .layer-box{width:140rem;}
+    .note-list{max-width: 160rem; margin:0 auto;transition:.3s;padding:0;}
+    .note-list .note-item{width:calc(25% - 3.9999rem);margin:2rem 1.8rem;transition:.3s;}
+}
