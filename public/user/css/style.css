@@ -82,10 +82,10 @@ a{text-decoration:none;}
 
 /* 리스트 */
 .note{padding:12rem 0;transition:.3s}
-.note-list{display:flex;flex-wrap:wrap;transition:.3s;margin:0 auto;padding:0 1.65rem;}
-.note-list .note-item{width:40.4rem;margin:1rem auto;border-top:.1rem solid var(--basic);border-right:.3rem solid var(--basic);border-bottom:.3rem solid var(--basic);border-left:.1rem solid var(--basic);transition:.3s;}/* max-width: 40.4rem 삭제 -> width:100% , width: 40.4rem으로 변경 */
-.note-list .note-item a{display:flex;flex-direction:column;padding:1rem;transition:.3s}
-.note-list .note-item .note-img{position:relative;width:100%;padding-top:78.22%;background-color:var(--background);border:.1rem solid var(--basic);transition:.3s}
+.note-list{display:flex;flex-wrap:wrap;transition:.3s;margin:0 auto;padding:0 1.84rem;}
+.note-list .note-item{width:40.4rem;margin:1rem auto;transition:.3s;}/* max-width: 40.4rem 삭제 -> width:100% , width: 40.4rem으로 변경 */
+.note-list .note-item a{display:flex;flex-direction:column;transition:.3s}
+.note-list .note-item .note-img{position:relative;width:100%;padding-top:78.22%;background-color:var(--background);transition:.3s}
 .note-list .note-item .note-img img{position:absolute;top:0;left:0;width:100%;height:100%;transition:.3s}
 .note-list .note-item .note-info{color:var(--text);transition:.3s}
 .note-list .note-item .note-info p:nth-of-type(1){font-size:1.8rem;height:5.5rem;line-height:5.5rem;border-bottom:1px solid var(--basic);transition:.3s}
@@ -155,7 +155,7 @@ a{text-decoration:none;}
     html{font-size:62.5%;} 
     .sub-category .horizonScroll__itemText{font-size:1.6rem;}
     .note{padding:15rem 0;transition:.3s}
-    .note-list{margin:0 auto;padding:0 1.4rem;}
+    .note-list{margin:0 auto; padding:0;}
 }
  
 /* Medium devices (tablets, 768px and up) */
@@ -163,7 +163,7 @@ a{text-decoration:none;}
     .navi{height: 6rem;line-height: 6rem;}
     .navi-main #mainCategory li a{font-size:1.8rem;}
     .navi-main #mainCategory{height: 6rem;}
-    .note-list .note-item{width:calc(50% - 1.2rem);margin:.6rem .4rem;max-width:none;transition:.3s}
+    .note-list .note-item{width:calc(50% - 3.6rem);margin:.6rem 1.8rem;max-width:none;transition:.3s;}
 
     /* 폰트 사이즈 */
     .pop-area h1{font-size:4rem;transition:.3s}
@@ -174,17 +174,17 @@ a{text-decoration:none;}
  
 /* Large devices (desktops, 992px and up) */
  @media (min-width: 62rem) {
-    .note-list .note-item{width:calc(33.33% - 1.2rem);margin:.6rem .4rem;transition:.3s}
+    .note-list .note-item{width:calc(33.33% - 3.6rem);margin:.6rem .4rem;padding:1.4rem;transition:.3s}
  }
  
 /* X-Large devices (large desktops, 1200px and up) */
  @media (min-width: 75rem) {
-    .note-list .note-item{width:calc(25% - 1.2rem);margin:.6rem .4rem;transition:.3s;}
+    .note-list .note-item{width: calc(25% - 3.8rem);margin: 0.6rem 1.9rem;transition: .3s;padding:0;}
  }
  
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 87.5rem) {
     .layer-n .layer-box{width:140rem;}
     .note-list{max-width: 160rem; margin:0 auto;transition:.3s;padding:0;}
-    .note-list .note-item{width:calc(25% - 3.9999rem);margin:2rem 1.8rem;transition:.3s;}
+    .note-list .note-item{width:calc(25% - 3.6rem);margin:2rem 1.8rem;transition:.3s;}
 }
