@@ -48,7 +48,7 @@ a{text-decoration:none;}
 
 /* Nav 타이틀 */
 /* 104*96 */
-.navi h1 a{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);/* background:url("../../images/profile.png") no-repeat 0 0 / 100% auto; */width:3.466rem;height:3.2rem;z-index: 1;} 
+.navi h1 a{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);background:url("../../images/doodle01.png") no-repeat 0 0 / 100% auto;width:3.3rem;height:3.3rem;z-index: 1;} 
 :root[color-theme='dark'] .navi h1 a{filter:invert();}
 
 /* Nav 메인 카테고리 */
