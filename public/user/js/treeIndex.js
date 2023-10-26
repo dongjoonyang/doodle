@@ -5,28 +5,28 @@ class treeIndex {
     this.canvas = document.querySelector('#tree');
 
     this.ctx = this.canvas.getContext('2d');
-    this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+    this.pixelRatio = window.devicePixelRatio > 1 ? 1 : 1; /* 1 ? 2 : 1 */
 
     window.addEventListener('resize', this.resize.bind(this), false);
     window.addEventListener('click', this.click.bind(this), false);
 
     this.resize();
-    this.setBtn();
+    //this.setBtn();
   }
 
-  setBtn() {
-    this.nightBtn = document.querySelector('.night');
-    this.dayBtn = document.querySelector('.day');
+    //   setBtn() {
+    //     this.nightBtn = document.querySelector('.night');
+    //     this.dayBtn = document.querySelector('.day');
 
-    this.day = true;
+    //     this.day = true;
 
-    this.nightBtn.addEventListener(
-      'click',
-      this.nightBtnHandler.bind(this),
-      false
-    );
-    this.dayBtn.addEventListener('click', this.dayBtnHandler.bind(this), false);
-  }
+    //     this.nightBtn.addEventListener(
+    //       'click',
+    //       this.nightBtnHandler.bind(this),
+    //       false
+    //     );
+    //     this.dayBtn.addEventListener('click', this.dayBtnHandler.bind(this), false);
+    //   }
 
   nightBtnHandler() {
     this.resize();

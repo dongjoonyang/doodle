@@ -5,7 +5,7 @@ body {
   overflow-x: hidden;
 }
 .section01{height: 100vh; background: #121212;overflow: hidden;}
-#tree{position:absolute;left:0;top:0;}
+#tree{position:fixed;top:0;right:0;bottom:0;left:0;}
 
 /* Small devices (landscape phones, 576px and up) *//* 미디어 쿼리는 기본 브라우저 크기 font-size 16을 먹음 style.css에 미디어쿼리 재정의함 */
 @media (min-width: 36rem) {/* font 10px */} 
