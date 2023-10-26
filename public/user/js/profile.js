@@ -1,170 +1,169 @@
 /**
  * =======================================
- * section01 벛꽃 
+ * section01 비오는 날
  * =======================================
  */
 (function () {
-    const canvas = document.querySelector('#blossom');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const ctx = canvas.getContext('2d');
-
-    const TOTAL = 70
-    const petalArray = []
-
-    const petalImg = new Image()
-    petalImg.src = '/images/petal.png'
-    petalImg.onload = () => {
-    for (let i = 0; i < TOTAL; i++) {
-        petalArray.push(new Petal())
-    }
-    render()
-    }
-
-    function render() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        petalArray.forEach(petal => {
-            petal.animate();
-        });
-
-        window.requestAnimationFrame(render);
-    }
-
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-    })
-
-    class Petal {
-        constructor() {
-            this.x = Math.random() * canvas.width
-            this.y = Math.random() * canvas.height * 2 - canvas.height
-            this.w = 30 + Math.random() * 15
-            this.h = 20 + Math.random() * 10
-            this.opacity = this.w / 45
-            this.xSpeed = 2 + Math.random()
-            this.ySpeed = 1 + Math.random() * 0.5
-            this.flip = Math.random()
-            this.flipSpeed = Math.random() * 0.03
-        }
-
-        draw() {
-            if (this.y > canvas.height || this.x > canvas.width) {
-            this.x = -petalImg.width
-            this.y = Math.random() * canvas.height * 2 - canvas.height
-            this.xSpeed = 2 + Math.random()
-            this.ySpeed = 1 + Math.random() * 0.5
-            this.flip = Math.random()
-            }
-            ctx.globalAlpha = this.opacity
-            ctx.drawImage(
-            petalImg,
-            this.x,
-            this.y,
-            this.w * (0.66 + (Math.abs(Math.cos(this.flip)) / 3)),
-            this.h * (0.8 + (Math.abs(Math.sin(this.flip)) / 2)),
-            )
-        }
-
-        animate() {
-            this.x += this.xSpeed
-            this.y += this.ySpeed
-            this.draw()
-            this.flip += this.flipSpeed
-        }
-    }
-})();
-
-/**
- * =======================================
- * section01 움직이는 글자 
- * =======================================
- */
-(function () {
-    const pTag1 = document.querySelector('.first-parallel')
-    const pTag2 = document.querySelector('.second-parallel')
+    const canvas = document.querySelector('#rain')
+    const ctx = canvas.getContext('2d')
     
-    const textArr1 = 'Yummy Tasty Delicious Useful Coding Yummy Yummmmy Yummmmmmmmmy yum'.split(' ')
-    const textArr2 = 'Chicken Hamburger Pizza Salad Sushi Bibimbab Gimbab JJajangmyeon'.split(' ')
-
-    let count1 = 0
-    let count2 = 0
-
-    initTexts(pTag1, textArr1)
-    initTexts(pTag2, textArr2)
-
-    function initTexts(element, textArray) {
-    textArray.push(...textArray)
-        for (let i = 0; i < textArray.length; i++) {
-            element.innerText += `${textArray[i]}\u00A0\u00A0\u00A0\u00A0`
+    const THUNDER_RATE = 0.0007
+    let TOTAL
+    let rains = []
+    let drops = []
+    let thunder
+    let mouse = { x: 0, y: 0, isActive: false }
+    
+    // 빗방울 클래스
+    class Rain {
+      constructor(x, y, velocity) {
+        this.x = x
+        this.y = y
+        this.velocity = velocity
+        this.alpha = 2
+      }
+    
+      draw() {
+        const { x, y, velocity, alpha } = this
+        ctx.beginPath()
+        ctx.moveTo(x, y)
+        ctx.lineTo(x + (velocity.x) * alpha, y + (velocity.y) * alpha)
+        ctx.strokeStyle = '#8899a6'
+        ctx.lineWidth = 1.5
+        ctx.stroke()
+      }
+    
+      splash() {
+        for (let i = 0; i < 3; i++) {
+          drops.push(new Drop(this.x, this.velocity))
         }
-    }
-
-    function marqueeText(count, element, direction) {
-        if (count > element.scrollWidth / 2) {
-            element.style.transform = `translate3d(0, 0, 0)`
-            count = 0
+      }
+    
+      animate() {
+        if (this.y > innerHeight) {
+          this.splash()
+          this.x = -(innerWidth * 0.2) + Math.random() * (innerWidth * 1.4)
+          this.y = -20
         }
-        element.style.transform = `translate3d(${direction * count}px, 0, 0)`
-
-        return count
+        this.velocity.x = mouse.isActive ? -1 + Math.random() * 2 + (-innerWidth / 2 + mouse.x) / 150 : -1 + Math.random() * 2
+        this.x += this.velocity.x
+        this.y += this.velocity.y
+    
+        this.draw()
+      }
     }
-
-    function animate() {
-        count1++
-        count2++
-
-        count1 = marqueeText(count1, pTag1, -1)
-        count2 = marqueeText(count2, pTag2, 1)
-
-        window.requestAnimationFrame(animate)
+    
+    // 스플래시 클래스
+    class Drop {
+      constructor(x, velocity) {
+        this.x = x
+        this.y = innerHeight
+        this.velocity = {
+          x: velocity.x + -2 + Math.random() * 4,
+          y: -velocity.y + 5 + Math.random() * 5
+        }
+        this.gravity = 1.5
+      }
+    
+      draw() {
+        ctx.beginPath()
+        ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2, false)
+        ctx.fillStyle = '#8899a6'
+        ctx.fill()
+      }
+    
+      animate() {
+        this.velocity.y += this.gravity
+        this.x += this.velocity.x
+        this.y += this.velocity.y
+    
+        this.draw()
+      }
     }
-
-    function scrollHandler() {
-        count1 += 15
-        count2 += 15
+    
+    // 천둥
+    class Thunder {
+      constructor() {
+        this.opacity = 0
+      }
+    
+      draw() {
+        const grid = ctx.createLinearGradient(0, 0, 0, innerHeight)
+        grid.addColorStop(0, `rgba(66, 84, 99, ${this.opacity})`)
+        grid.addColorStop(1, `rgba(18, 23, 27, ${this.opacity})`)
+        ctx.fillStyle = grid
+        ctx.fillRect(0, 0, innerWidth, innerHeight)
+      }
+    
+      animate() {
+        if (this.opacity === 0) return
+        this.opacity -= 0.005
+        this.draw()
+      }
     }
-
-    window.addEventListener('scroll', scrollHandler)
-    animate()
-})();
-
-/**
- * =======================================
- * section01 팔레트
- * =======================================
- */
-(function () {
-  const content1 = document.querySelector('.content1')
-  const content2 = document.querySelector('.content2')
-  const content3 = document.querySelector('.content3')
-  const path1 = document.querySelector('.path2')
-  const path2 = document.querySelector('.path3')
-  const path3 = document.querySelector('.path4')
-  const path1Length = path1.getTotalLength()
-  const path2Length = path2.getTotalLength()
-  const path3Length = path3.getTotalLength()
-  path1.style.strokeDasharray  = path1Length + ' ' + path1Length
-  path1.style.strokeDashoffset = calcDashoffset(window.innerHeight * 0.8, content1, path1Length)
-
-  path2.style.strokeDasharray  = path2Length + ' ' + path2Length
-  path2.style.strokeDashoffset = path2Length
-
-  path3.style.strokeDasharray  = path3Length + ' ' + path3Length
-  path3.style.strokeDashoffset = path3Length
-
-  function calcDashoffset(scrollY, element, length) {
-    const ratio = (scrollY - element.offsetTop) / element.offsetHeight
-    const value = length - (length * ratio)
-    return value < 0 ? 0 : value > length ? length : value
-  }
-
-  function scrollHandler() {
-    const scrollY = window.scrollY + (window.innerHeight * 0.8)
-    path1.style.strokeDashoffset = calcDashoffset(scrollY, content1, path1Length)
-    path2.style.strokeDashoffset = calcDashoffset(scrollY, content2, path2Length)
-    path3.style.strokeDashoffset = calcDashoffset(scrollY, content3, path3Length)
-  }
-
-  window.addEventListener('scroll', scrollHandler)
+    
+    // 초기화 작업
+    function init() {
+      canvas.width = innerWidth
+      canvas.height = innerHeight
+    
+      TOTAL = Math.floor(innerWidth * innerHeight / 15000)
+      rains = []
+      drops = []
+      thunder = new Thunder()
+    
+      for (let i = 0; i < TOTAL; i++) {
+        const x = Math.random() * innerWidth
+        const y = Math.random() * innerHeight
+        const velocity = {
+          y: 13 + Math.random() * 5
+        }
+        rains.push(new Rain(x, y, velocity))
+      }
+    }
+    
+    // 렌더 함수
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      if (Math.random() < THUNDER_RATE) thunder.opacity = 1
+      thunder.animate()
+      rains.forEach(rain => rain.animate())
+      drops.forEach((drop, index) => {
+        drop.animate()
+        if (drop.y > innerHeight) drops.splice(index, 1)
+      })
+    
+      window.requestAnimationFrame(render)
+    }
+    
+    // resize 이벤트
+    window.addEventListener('resize', () => init())
+    
+    // mouse 이벤트
+    canvas.addEventListener('mouseenter', () => mouse.isActive = true)
+    canvas.addEventListener('mouseleave', () => mouse.isActive = false)
+    canvas.addEventListener('mousemove', e => {
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+    })
+    
+    // 날씨 api로 정보 데이터 가져오기
+    function getWeatherData() {
+      const lat = 36.649864
+      const lon = 127.430646
+      const appKey = '98b2f0fa13bba9cb7371f9f667dfb818'
+      const data = axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appKey}`)
+      return data
+    }
+    
+    // 비오는 날만 캔버스에 그려주기
+    getWeatherData().then(result => {
+      const currentWeather = result.data.weather[0].main
+      console.log(currentWeather)
+      const rainingStatus = ['Rain', 'Thunderstorm', 'Drizzle', 'Clear', 'Clouds']
+      if (rainingStatus.includes(currentWeather)) {
+        init()
+        render()
+      }
+    })
 })();
