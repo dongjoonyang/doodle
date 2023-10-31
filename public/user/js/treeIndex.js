@@ -28,31 +28,41 @@ class treeIndex {
     //     this.dayBtn.addEventListener('click', this.dayBtnHandler.bind(this), false);
     //   }
 
-  nightBtnHandler() {
-    this.resize();
-    this.dayBtn.classList.add('show');
-    this.nightBtn.classList.remove('show');
-    document.body.classList.add('black');
-    this.day = false;
-  }
+  // nightBtnHandler() {
+  //   this.resize();
+  //   this.dayBtn.classList.add('show');
+  //   this.nightBtn.classList.remove('show');
+  //   document.body.classList.add('black');
+  //   this.day = false;
+  // }
 
-  dayBtnHandler() {
-    this.resize();
-    this.dayBtn.classList.remove('show');
-    this.nightBtn.classList.add('show');
-    document.body.classList.remove('black');
-    this.day = true;
-  }
+  // dayBtnHandler() {
+  //   this.resize();
+  //   this.dayBtn.classList.remove('show');
+  //   this.nightBtn.classList.add('show');
+  //   document.body.classList.remove('black');
+  //   this.day = true;
+  // }
 
   resize() {
-    this.stageWidth = document.body.clientWidth;
-    this.stageHeight = document.body.clientHeight;
+    const section01 =  document.querySelector(".section01");
+    this.stageWidth = section01.clientWidth;
+    this.stageHeight = section01.clientHeight;
 
     this.canvas.width = this.stageWidth * this.pixelRatio;
     this.canvas.height = this.stageHeight * this.pixelRatio;
     this.ctx.scale(this.pixelRatio, this.pixelRatio);
 
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+
+    // this.stageWidth = document.body.clientWidth;
+    // this.stageHeight = document.body.clientHeight;
+
+    // this.canvas.width = this.stageWidth * this.pixelRatio;
+    // this.canvas.height = this.stageHeight * this.pixelRatio;
+    // this.ctx.scale(this.pixelRatio, this.pixelRatio);
+
+    // this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
   }
 
   click(event) {

@@ -35,7 +35,7 @@ a{text-decoration:none;}
     transition:.3s;
 }
 /* Nav */
-.navi{position:fixed;top:0;right:0;left:0;height:5rem;line-height:5rem;background-color:var(--background);z-index:1;transition:.3s}
+.navi{position:fixed;top:0;right:0;left:0;height:5rem;line-height:5rem;background-color:var(--background);z-index:10;transition:.3s}
 .navi-border{padding: 0 1.8rem;transition: .3s;max-width: 160rem;margin: 0 auto;box-sizing: border-box;}
 .navi-line{border-bottom: 3px solid var(--basic);transition: .3s;}
 

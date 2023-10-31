@@ -1,11 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Noto+Sans+KR:wght@900&display=swap');
+
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */ /* section 02 카드 애니메이션 에러로 주석처리 */
 }
-.section01{height: 100vh; background: #121212;overflow: hidden;}
-#tree{position:fixed;top:0;right:0;bottom:0;left:0;}
+.section01{position:relative;height:100vh;background: #121212;overflow: hidden;}
+.section01 figure{position:absolute;right:2rem;bottom:3rem;z-index: 5;}
+.section01 .text{position:absolute;left:0;bottom:13rem;z-index: 3;font-size:8rem;color:#fff;transform: rotate(270deg);width:30rem;font-family: "Karla";text-shadow: 1px 1px 19px rgba(0,0,0,0.6);}
+.section01 .text ul{display:flex;justify-content: space-between;}
+.section01 .text ul li{ font-size:2rem;}
+#tree{position:absolute;top:0;right:0;left:0;width:100%;height:100vh;}
+
+/* section 02 */
+.section02 .main-content-1 {width: 100%;height: 500vh;}
+.section02 .sticky {position: sticky;top: 0;height: 100vh;display: flex;align-items: center;justify-content: center;overflow: hidden;}
+.section02 .sticky-background {width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;font-size: 8vw;}
+.section02 .card-frame {position: absolute;width: 95vw;height: 30vw;display: flex;align-items: center;justify-content: space-between;}
+.section02 .card {width: 24%;height: 100%;display: flex;align-items: center;justify-content: center;font-size: 20vw;transform-style: preserve-3d;position: relative;
+  transform: perspective(100vw)translateX(100vw) rotateY(180deg);transition: transform 0.1s;}
+.section02 .front, 
+.back {position: absolute;width: 100%;height: 100%;border-radius: 1vw;overflow: hidden;backface-visibility: hidden;
+  box-shadow: 1px 1px 10px 7px rgba(0,0,0,0.11);
+-webkit-box-shadow: 1px 1px 10px 7px rgba(0,0,0,0.11);
+-moz-box-shadow: 1px 1px 10px 7px rgba(0,0,0,0.11);
+}
+.section02 .front {background-color: #FFF;font-size: 0.5em;display: flex;justify-content: center;text-align: center;align-items: stretch;}
+.back {transform: rotateY(180deg);background-color: #fff;font-size:5rem;}
+
+/* card contents */
+.section02 .back .icon_html,
+.section02 .front .icon_css,
+.section02 .back .icon_js,
+.section02 .front .icon_jquery,
+.section02 .back .icon_node,
+.section02 .front .icon_react,
+.section02 .back .icon_photoshop,
+.section02 .front .icon_xd{display:flex;flex-direction: column;align-items: center; justify-content:center; height:100%;}
+
+.section02 .back .icon_html .icon_img{width:calc(100 / 400 * 100%);height: auto;padding-bottom: calc(100 / 400 * 100%);background: url("../../images/icon_html.png") no-repeat center center / 100%;}
+.section02 .front .icon_css .icon_img{width:calc(100 / 80 * 100%);height: auto;padding-bottom: calc(100 / 80 * 100%);background: url("../../images/icon_css.png") no-repeat center center / 100%;}
+.section02 .back .icon_js .icon_img{width:calc(100 / 400 * 100%);height: auto;padding-bottom: calc(100 / 400 * 100%);background: url("../../images/icon_js.png") no-repeat center center / 100%;}
+.section02 .front .icon_jquery .icon_img{width:calc(100 / 140 * 100%);height: auto;padding-bottom: calc(100 / 140 * 100%);background: url("../../images/icon_jquery.png") no-repeat center center / 100%;}
+.section02 .back .icon_node .icon_img{width:calc(100 / 250 * 100%);height: auto;padding-bottom: calc(100 / 250 * 100%);background: url("../../images/icon_node.png") no-repeat center center / 100%;}
+.section02 .front .icon_react .icon_img{width:calc(100 / 150 * 100%);height: auto;padding-bottom: calc(100 / 150 * 100%);background: url("../../images/icon_react.png") no-repeat center center / 100%;}
+.section02 .back .icon_photoshop .icon_img{width:calc(100 / 300 * 100%);height: auto;padding-bottom: calc(100 / 300 * 100%);background: url("../../images/icon_photoshop.png") no-repeat center center / 100%;}
+.section02 .front .icon_xd .icon_img{width:calc(100 / 65 * 100%);height: auto;padding-bottom: calc(100 / 65 * 100%);background: url("../../images/icon_xd.png") no-repeat center center / 100%;}
+
+.section02 .front, .section02 .back *{font-size:4rem;font-weight: bold;color:#333;}
+.section02 .front p, 
+.section02 .back p{margin-top:20px;}
+
+@media screen and (orientation:portrait) {
+  .card-frame {display: grid;height: initial;width: initial;grid-template-rows: repeat(2, 1fr);grid-template-columns: repeat(2, 1fr);gap: 10vw;justify-items: center;}
+  .card {font-size: 20vw;width: 35vw;height: 50vw;}
+}
 
 /* Small devices (landscape phones, 576px and up) *//* 미디어 쿼리는 기본 브라우저 크기 font-size 16을 먹음 style.css에 미디어쿼리 재정의함 */
 @media (min-width: 36rem) {/* font 10px */} 
