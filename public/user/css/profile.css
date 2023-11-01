@@ -6,10 +6,22 @@ body {
   /* overflow-x: hidden; */ /* section 02 카드 애니메이션 에러로 주석처리 */
 }
 .section01{position:relative;height:100vh;background: #121212;overflow: hidden;}
-.section01 figure{position:absolute;right:2rem;bottom:3rem;z-index: 5;}
+.section01 figure{position:absolute;right:2rem;top:10rem;z-index: 5;}
+.section01 .web_text{color:#fff;position:absolute;top:10rem;left:8rem;font-size: 1.5rem;}
+.section01 .web_text p:nth-child(1){opacity: .2;}
+.section01 .web_text ul{display:flex;}
+.section01 .web_text ul li{opacity: .5;margin-top:.8rem;margin-right:2rem;}
+.section01 .web_text ul li:first-child{width:7rem;margin-right:0;}
+.section01 .web_text ul li span{display:inline-block;width:5rem;}
 .section01 .text{position:absolute;left:0;bottom:13rem;z-index: 3;font-size:8rem;color:#fff;transform: rotate(270deg);width:30rem;font-family: "Karla";text-shadow: 1px 1px 19px rgba(0,0,0,0.6);}
 .section01 .text ul{display:flex;justify-content: space-between;}
 .section01 .text ul li{ font-size:2rem;}
+.section01 .copy{position:absolute;right:3rem;bottom:7rem;color:#fff;text-align: right;}
+.section01 .copy p{font-size:1.8rem;margin-bottom:2rem;font-weight: bold;}
+.section01 .copy dl{margin-bottom:2rem;}
+.section01 .copy dl dt{margin-bottom:.5rem;opacity: .8;}
+.section01 .copy dl dd{margin-bottom:.3rem;font-size:1.4rem;opacity: .5;}
+.section01 .copy dl dd a{color:#fff;text-decoration: underline;}
 #tree{position:absolute;top:0;right:0;left:0;width:100%;height:100vh;}
 
 /* section 02 */
@@ -27,6 +39,27 @@ body {
 }
 .section02 .front {background-color: #FFF;font-size: 0.5em;display: flex;justify-content: center;text-align: center;align-items: stretch;}
 .back {transform: rotateY(180deg);background-color: #fff;font-size:5rem;}
+
+/* section03 */
+.section03{background-color: #121212;height:calc(100vh - 5rem);}
+.section03 .section_box{margin-top:10rem;padding-left:8rem;display:flex;flex-direction: column;justify-content: space-around; height:calc(100vh - 5rem);}
+.section03 .section_box > div{color:#fff; }
+.section03 .section_box > div a{color:#fff;opacity: .6;}
+.section03 .section_box > div > div > p{padding-bottom:1rem;}
+.section03 .section_box .velog{padding-left:7rem;position: relative;}
+.section03 .section_box .velog > p{position: absolute;left:0;top:0;}
+.section03 .section_box .velog p svg.velogo{width:5rem;height:5rem;}
+.section03 .section_box .brand{font-weight: bold; font-size: 2rem;margin-bottom:1rem;}
+.section03 .section_box a{display:inline-block;padding-top:1rem;text-decoration: underline;}
+
+.section03 .section_box .tistory{padding-left:7rem;position: relative;}
+.section03 .section_box .tistory > p{position: absolute;left:-1rem;top:-.8rem;}
+.section03 .section_box .tistory p svg.tistorylogo{width:6rem;height:6rem;}
+
+.section03 .section_box .github{padding-left:7rem;position: relative;}
+.section03 .section_box .github > p{position: absolute;left:0;top:0;}
+.section03 .section_box .github p svg.githublogo{width:9rem;height:9rem;}
+
 
 /* card contents */
 .section02 .back .icon_html,
