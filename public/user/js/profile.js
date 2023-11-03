@@ -1,13 +1,5 @@
 /**
  * =======================================
- * 스크롤 애니메이션
- * =======================================
- */
-
-
-
-/**
- * =======================================
  * section01 비오는 날
  * =======================================
  */
@@ -174,6 +166,69 @@
         render()
       }
     })
+})();
+
+/**
+ * =======================================
+ * section01 마우스 커스텀
+ * =======================================
+ */
+(function () {
+  const cursorParent = document.getElementById('mouseCursor');
+  const cursorChild = cursorParent.children[0];
+  window.addEventListener('mousemove', mousemove);
+  window.addEventListener('mousedown', mousedown);
+  window.addEventListener('mouseup', mouseup);
+
+  let scale = 1
+  let stage = ''
+  let cursorX = 0, cursorY = 0
+  function mousemove(e) {
+    cursorX = e.pageX - cursorParent.offsetWidth / 2
+    cursorY = e.pageY - cursorParent.offsetHeight / 2
+    cursorParent.style.transform =
+      `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+
+    switch(e.target.getAttribute('data-cursor')) {
+      case 'rain':
+        if (stage === 'rain') return
+        scale = 5
+        stage = 'rain'
+        cursorChild.setAttribute('data-name', e.target.getAttribute('data-name'))
+        cursorParent.className = 'cursor_text_mode'
+        break
+      case 'card':
+        if (stage === 'card') return
+        scale = 5
+        stage = 'card'
+        cursorChild.setAttribute('data-name', e.target.getAttribute('data-name'))
+        cursorParent.className = 'cursor_text_mode'
+        break
+      case 'link':
+        if (stage === 'link') return
+        scale = 5
+        stage = 'link'
+        cursorChild.setAttribute('data-name', e.target.getAttribute('data-name'))
+        cursorParent.className = 'cursor_text_mode'
+        break
+      default:
+        if (stage === '') return
+        scale = 1
+        stage = ''
+        cursorChild.setAttribute('data-name', '')
+        cursorParent.className = ''
+        break
+    }
+    cursorChild.style.setProperty('--cursor-scale', scale)
+  }
+  function mousedown(e) {
+    scale *= 0.8
+    cursorChild.style.setProperty('--cursor-scale', scale)
+  }
+  function mouseup(e) {
+    scale *= 1.25
+    cursorChild.style.setProperty('--cursor-scale', scale)
+  }
 })();
 
 /**

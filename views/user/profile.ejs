@@ -2,7 +2,7 @@
 <link href="/user/css/profile.css" rel="stylesheet" type="text/css" />
 
 <section class="profiler">
-    <section class="section01">
+    <section class="section01" >
       <figure>
         <figcaption></figcaption>
         <audio controls loop src="/public/audio/rain.mp3">
@@ -33,7 +33,7 @@
         </ul>
       </div>
       <canvas id="rain"></canvas>
-      <canvas id="tree"></canvas>
+      <canvas id="tree" data-cursor="rain" data-name="Click!"></canvas>
       <!-- 저작권 -->
       <div class="copy">
         <p>Copyright</p>
@@ -51,22 +51,22 @@
     </section>
     
     <!-- section02 -->
-    <section class="section02">
-      <div class="main-content-1">
+    <section class="section02" >
+      <div class="main-content-1" >
         <div class="sticky">
-          <div class="sticky-background">
+          <div class="sticky-background" >
             I can use these techniques
           </div>
-          <div class="card-frame">
-            <div class="card">
-              <div class="front">
-                <div class="icon_css">
+          <div class="card-frame" data-cursor="card" data-name="Scroll">
+            <div class="card" >
+              <div class="front" data-cursor="card" data-name="Scroll">
+                <div class="icon_css" >
                   <div class="icon_img"></div>
                   <p>CSS</p>
                   <p class="progress"></p> 
                 </div>
               </div>
-              <div class="back">
+              <div class="back" data-cursor="card" data-name="Scroll">
                 <div class="icon_html">
                   <div class="icon_img"></div>
                   <p>HTML</p>
@@ -75,14 +75,14 @@
               </div>
             </div>
             <div class="card">
-              <div class="front">
+              <div class="front" data-cursor="card" data-name="Scroll">
                 <div class="icon_jquery">
                   <div class="icon_img"></div>
                   <p>jQuery</p>
                   <p class="progress"></p> 
                 </div>
               </div>
-              <div class="back">
+              <div class="back" data-cursor="card" data-name="Scroll">
                 <div class="icon_js">
                   <div class="icon_img"></div>
                   <p>Javascript</p>
@@ -91,14 +91,14 @@
               </div>
             </div>
             <div class="card">
-              <div class="front">
+              <div class="front" data-cursor="card" data-name="Scroll">
                 <div class="icon_react">
                   <div class="icon_img"></div>
                   <p>React.js</p>
                   <p class="progress"></p> 
                 </div>
               </div>
-              <div class="back">
+              <div class="back" data-cursor="card" data-name="Scroll">
                 <div class="icon_node">
                   <div class="icon_img"></div>
                   <p>NODE.js</p>
@@ -107,14 +107,14 @@
               </div>
             </div>
             <div class="card">
-              <div class="front">
+              <div class="front" data-cursor="card" data-name="Scroll">
                 <div class="icon_xd">
                   <div class="icon_img"></div>
                   <p>XD</p>
                   <p class="progress"></p> 
                 </div>
               </div>
-              <div class="back">
+              <div class="back" data-cursor="card" data-name="Scroll">
                 <div class="icon_photoshop">
                   <div class="icon_img"></div>
                   <p>Photoshop</p>
@@ -137,7 +137,7 @@
           <div>
             <p class="brand">Velog</p>
             <p>Doodle Drawing Book</p>
-            <a href="#;">https://velog.io/@kn</a>
+            <a href="#;" data-cursor="link" data-name="Velog">https://velog.io/@kn</a>
           </div>
         </div>
         <div class="tistory">
@@ -172,7 +172,7 @@
             <p class="brand">Tistory</p>
             <p>웹&앱개발하는 낙서의 블로그 입니다. 그 외 만화, 게임</p>
             <p>스포츠, 쇼핑, 영화 등 다양한 주제에도 관심이 많습니다.</p>
-            <a href="#;">https://doodle.tistory.com/</a>
+            <a href="#;" data-cursor="link" data-name="Tistory">https://doodle.tistory.com/</a>
           </div>
         </div>
         <div class="github">
@@ -183,12 +183,16 @@
             <p class="brand">GitHub</p>
             <p>I’m currently learning React</p>
             <p>The ultimate goal is to create a React-native app.</p>
-            <a href="#;">https://github.com/username</a>
+            <a href="#;" data-cursor="link" data-name="Github">https://github.com/username</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- mouse custom -->
+    <div id="mouseCursor">
+      <div class="custom"></div>
+    </div>  
 </section>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/user/js/profile.js"></script>
